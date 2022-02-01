@@ -5,7 +5,7 @@ const app = express();
 
 app.use(express.json());
 app.get('/ping', (req, res) => {
-  res.status(200).end('pong');
+  res.status(201).end('pong');
 })
 
 module.exports = app;

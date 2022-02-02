@@ -1,5 +1,7 @@
 import request from 'supertest';
-import app from "../app.js";
+import App from "../app.js";
+
+const app = new App().app;
 
 describe('GET /ping', () => {
   test('should respond with a 200 status code', async () => {

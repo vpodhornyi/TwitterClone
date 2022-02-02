@@ -1,5 +1,7 @@
-require('dotenv').config();
-const express = require('express');
+import dotenv from 'dotenv';
+
+dotenv.config();
+import express from 'express';
 
 const app = express();
 
@@ -8,4 +10,4 @@ app.get('/ping', (req, res) => {
   res.status(200).end('pong');
 })
 
-module.exports = app;
+export default app;

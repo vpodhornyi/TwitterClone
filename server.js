@@ -1,7 +1,6 @@
-import AppImport from './App.js';
-// import User from './src/models/User.js'
+import dotenv from 'dotenv';
 
-const App = new AppImport();
-App.start();
+dotenv.config();
+import App from './App.js';
 
-export const sequelize = App.sequelize;
+new App().start();

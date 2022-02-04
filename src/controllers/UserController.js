@@ -1,4 +1,10 @@
+import UserService from '../service/UserService.js';
+
 class UserController {
+
+  constructor(sequelize) {
+    this.UserService = new UserService(sequelize);
+  }
 
   /**
    * @desc GET test ping answer

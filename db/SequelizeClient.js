@@ -1,10 +1,10 @@
 import {Sequelize} from 'sequelize';
 
 class SequelizeClient {
-  #sequelize;
+  #_sequelize;
 
   constructor() {
-    this.#sequelize = new Sequelize(
+    this.#_sequelize = new Sequelize(
       process.env.PG_DB_NAME,
       process.env.PG_USER,
       process.env.PG_PASSWORD,
@@ -13,20 +13,13 @@ class SequelizeClient {
   }
 
   #connectionTest() {
-    this.#sequelize.authenticate()
+    this.#_sequelize.authenticate()
       .then(() => console.log('Connection has been established successfully.'))
       .catch(error => console.error('Unable to connect to the database:', error))
   }
 
-  #sync() {
-    this.#sequelize.sync().then(result => {
-      // console.log('result', result);
-    })
-      .catch(err => console.log('err', err));
-  }
-
-  get client() {
-    return this.#sequelize;
+  get sequelize() {
+    return this.#_sequelize;
   }
 }
 

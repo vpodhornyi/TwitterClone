@@ -2,6 +2,12 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 import express from 'express';
+import cookieParser from 'cookie-parser';
+import cors from 'cors';
+import morgan from 'morgan';
+import getRoutes from "./src/router/routers.js";
+
+export const APP_URL = '/app/v1';
 
 class App {
   #_app;
@@ -9,19 +15,16 @@ class App {
 
   constructor() {
     this.#_app = express();
-    this.#PORT = process.env.PORT;
-    this.#init();
-    this.#ping();
+    this.#PORT = process.env.PORT || 443;
+    this.#appUse();
   }
 
-  #init() {
+  #appUse() {
     this.#_app.use(express.json());
-  }
-
-  #ping() {
-    this.#_app.get('/ping', (req, res) => {
-      res.status(200).end('pong');
-    })
+    this.#_app.use(cookieParser());
+    this.#_app.use(cors());
+    this.#_app.use(morgan('combined'));
+    this.#_app.use(APP_URL, getRoutes(express.Router()))
   }
 
   get app() {

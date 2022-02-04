@@ -1,8 +1,8 @@
 import PingController from "../controllers/PingController.js";
 import UserController from "../controllers/UserController.js";
 
-export default router => {
-  const user = new UserController();
+export default (router, sequelize) => {
+  const user = new UserController(sequelize);
 
   // Ping
   router.get(`/ping`, PingController.getPong);

@@ -1,3 +1,7 @@
-import App from './App.js';
+import AppImport from './App.js';
+// import User from './src/models/User.js'
 
-new App().start();
+const App = new AppImport();
+App.start();
+
+export const sequelize = App.sequelize;

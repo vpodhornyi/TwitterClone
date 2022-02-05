@@ -1,3 +1,6 @@
+import dotenv from 'dotenv';
+
+dotenv.config();
 import express from 'express';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
@@ -30,6 +33,10 @@ class App {
 
   get models() {
     return this.#_models;
+  }
+
+  get app() {
+    return this.#_app;
   }
 
   start() {

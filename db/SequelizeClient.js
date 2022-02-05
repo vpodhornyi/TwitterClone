@@ -9,7 +9,7 @@ class SequelizeClient {
       process.env.PG_USER,
       process.env.PG_PASSWORD,
       {dialect: process.env.PG_DIALECT});
-    this.#connectionTest();
+    // this.#connectionTest();
   }
 
   #connectionTest() {

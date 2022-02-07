@@ -1,4 +1,11 @@
+import UserService from '../service/UserService.js';
+
 class UserController {
+  #UserService;
+
+  constructor(sequelize) {
+    this.#UserService = new UserService(sequelize);
+  }
 
   /**
    * @desc GET test ping answer
@@ -17,9 +24,15 @@ class UserController {
    * @desc POST user registration data
    * @router /user/registration
    */
-  registration(req, res, next) {
+  registration = async (req, res, next) => {
     try {
-      res.end('registration');
+      const body = req.body;
+
+      console.log('this - ', this);
+      console.log('body - ', body);
+      const answer = await this.#UserService.create(body);
+
+      res.json({answer});
 
     } catch (err) {
       next(err)

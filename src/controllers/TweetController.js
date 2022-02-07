@@ -1,9 +1,10 @@
 import TweetService from "../service/TweetService.js";
 
 class TweetController {
+  #tweetService
 
   constructor(sequelize) {
-    this.TweetService = new TweetService(sequelize);
+    this.#tweetService = new TweetService(sequelize);
   }
 
   /**
@@ -13,6 +14,25 @@ class TweetController {
   getPong(req, res, next) {
     try {
       res.status(200).end('pong');
+
+    } catch (err) {
+      next(err)
+    }
+  }
+
+  /**
+   * @desc POST user registration data
+   * @router /user/registration
+   */
+  addTweet = async (req, res, next) => {
+    try {
+      const body = req.body;
+
+      console.log('this - ', this);
+      console.log('body - ', body);
+      const answer = await this.#tweetService.create(body);
+
+      res.json({answer});
 
     } catch (err) {
       next(err)

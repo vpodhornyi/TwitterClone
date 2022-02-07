@@ -20,7 +20,6 @@ export default sequelize => {
     },
     parent_tweet_id: {
       type: DataTypes.INTEGER,
-      allowNull: false
     }
   }, {
     sequelize,

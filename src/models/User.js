@@ -18,7 +18,7 @@ export default sequelize => {
       type: DataTypes.STRING,
       allowNull: false
     },
-    last_name: {
+/*    last_name: {
       type: DataTypes.STRING,
       allowNull: false
     },
@@ -41,7 +41,7 @@ export default sequelize => {
     bg_image_url: {
       type: DataTypes.STRING,
       allowNull: false
-    },
+    },*/
   }, {
     sequelize,
     modelName: "user"

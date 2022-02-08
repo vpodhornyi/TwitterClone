@@ -38,6 +38,22 @@ class TweetController {
       next(err)
     }
   }
+
+  /**
+   * @desc GET all tweets
+   * @router /tweets
+   */
+  getTweets = async (req, res, next) => {
+    try {
+      const answer = await this.#tweetService.getTweets();
+
+      res.json({answer});
+
+    } catch (err) {
+      console.log(err);
+      next(err);
+    }
+  }
 }
 
 export default TweetController;

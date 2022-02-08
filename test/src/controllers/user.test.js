@@ -12,9 +12,9 @@ describe('GET /users/test/ping', () => {
   })
 })
 
-describe('POST /users/registration', () => {
+describe('POST /users', () => {
   test('should respond text "registration"', async () => {
-    const response = await req('post', '/users/registration');
+    const response = await req('post', '/users');
     expect(response.text).toBe('registration');
   })
 })

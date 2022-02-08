@@ -37,7 +37,7 @@ class App {
   start() {
     try {
       this.#_app.listen(this.#PORT, () => console.log(`server run on port: ${this.#PORT}`));
-      this.#_sequelize.sync({force: true});
+      this.#_sequelize.sync({force: false});
 
     } catch (e) {
       console.log(`server start error: ${e}`);

@@ -10,13 +10,22 @@ class UserService {
   create = async (userData) => {
     try {
       console.log('userData - ', userData);
-      const answer = await this.#UserRepository.create(userData);
-
-      return answer;
+      return await this.#UserRepository.create(userData);
 
     } catch (err) {
       console.log(err);
       return {err: 1};
+    }
+  }
+
+
+  getUsers = async () => {
+    try {
+      return await this.#UserRepository.getUsers();
+
+    } catch (err) {
+      console.log(err);
+      return {err: 1, msg: err};
     }
   }
 }

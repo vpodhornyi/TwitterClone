@@ -1,24 +1,38 @@
 import TweetRepository from "../repositories/TweetRepository.js";
 
-class UserService {
+class TweetService {
   #TweetRepository;
 
   constructor(sequelize) {
     this.#TweetRepository = new TweetRepository(sequelize);
   }
 
+  /**
+   * @param tweetData {Object}
+   * @return {Promise<*|{err: number}>}
+   */
   create = async (tweetData) => {
     try {
-      console.log('tweetData - ', tweetData);
-      const answer = await this.#TweetRepository.create(tweetData);
-
-      return answer;
+      return await this.#TweetRepository.create(tweetData);
 
     } catch (err) {
       console.log(err);
       return {err: 1};
     }
   }
+
+  /**
+   * @return {Promise<*|{msg, err: number}>}
+   */
+  getTweets = async () => {
+    try {
+      return await this.#TweetRepository.getTweets();
+
+    } catch (err) {
+      console.log(err);
+      return {err: 1, msg: err};
+    }
+  }
 }
 
-export default UserService;
+export default TweetService;

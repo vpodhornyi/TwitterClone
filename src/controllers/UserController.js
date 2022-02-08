@@ -93,13 +93,17 @@ class UserController {
 
   /**
    * @desc GET get all users
-   * @router /user/users
+   * @router /users
    */
-  gerUsers(req, res, next) {
+  getUsers = async (req, res, next) => {
     try {
-      res.end('users');
+      const answer = await this.#UserService.getUsers();
+
+      console.log(answer);
+      return res.json({answer});
 
     } catch (err) {
+      console.log(err);
       next(err)
     }
   }

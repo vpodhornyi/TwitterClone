@@ -9,12 +9,21 @@ class UserRepository {
 
   create = async (userData) => {
     try {
-      const id = await this.#User.create(userData)
+      return await this.#User.create(userData)
 
-      return id;
     } catch (err) {
       console.log(err);
       return {err: 1};
+    }
+  }
+
+  getUsers = async () => {
+    try {
+      return await this.#User.findAll();
+
+    } catch (err) {
+      console.log(err);
+      return {err: 1, msg: err};
     }
   }
 }

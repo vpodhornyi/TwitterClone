@@ -11,8 +11,8 @@ export default (router, sequelize) => {
 
   // User
   router.get(`/users/test/ping`, userController.getPong);
-  router.get(`/users`, userController.gerUsers);
-  router.post(`/users/registration`, userController.registration);
+  router.get(`/users`, userController.getUsers);
+  router.post(`/users`, userController.registration);
   router.post(`/users/login`, userController.login);
   router.post(`/users/logout`, userController.logout);
   router.post(`/users/activate`, userController.activate);
@@ -21,6 +21,7 @@ export default (router, sequelize) => {
   //tweet
   router.get(`/tweets/test/ping`, tweetController.getPong);
   router.post(`/tweets`, tweetController.addTweet);
+  router.get(`/tweets`, tweetController.getTweets);
 
   return router;
 };

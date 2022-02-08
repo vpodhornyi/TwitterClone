@@ -15,7 +15,7 @@ export default sequelize => {
       allowNull: false
     },
     body: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false
     },
     parent_tweet_id: {
@@ -26,7 +26,7 @@ export default sequelize => {
     modelName: "tweet"
   });
 
-  Tweet.belongsTo(User);
+  Tweet.User = Tweet.belongsTo(User);
 
   return Tweet;
 };

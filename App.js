@@ -15,13 +15,11 @@ class App {
   #_app;
   #PORT;
   #sequelize;
-  #router;
 
   constructor() {
     this.#_app = express();
     this.#PORT = process.env.PORT || 443;
     this.#sequelize = new SequelizeClient().sequelize;
-    this.#router = getRouter(express.Router(), new Model(this.#sequelize).models);
     this.#appUse();
   }
 
@@ -30,7 +28,7 @@ class App {
     this.#_app.use(cookieParser());
     this.#_app.use(cors());
     this.#_app.use(morgan('combined'));
-    this.#_app.use(APP_URL, this.#router);
+    this.#_app.use(APP_URL, getRouter(express.Router(), new Model(this.#sequelize).models));
   }
 
   get app() {

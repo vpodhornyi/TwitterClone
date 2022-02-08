@@ -5,7 +5,7 @@ import express from 'express';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import morgan from 'morgan';
-import getRoutes from "./src/router/routes.js";
+import getRouter from "./src/router/routes.js";
 import SequelizeClient from "./db/SequelizeClient.js";
 import getModels from  './src/models/models.js';
 
@@ -28,7 +28,7 @@ class App {
     this.#_app.use(cookieParser());
     this.#_app.use(cors());
     this.#_app.use(morgan('combined'));
-    this.#_app.use(APP_URL, getRoutes(express.Router(), getModels(this.#sequelize)));
+    this.#_app.use(APP_URL, getRouter(express.Router(), getModels(this.#sequelize)));
   }
 
   get app() {

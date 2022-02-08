@@ -1,10 +1,13 @@
-import tweet from '../models/Tweet.js';
+import models from '../models/models.js';
 
 class TweetRepository {
   #Tweet;
+  #User;
 
   constructor(sequelize) {
-    this.#Tweet = tweet(sequelize);
+    const {User, Tweet} = models(sequelize);
+    this.#Tweet = Tweet;
+    this.#User = User;
   }
 
   create = async (tweetData) => {
@@ -13,13 +16,15 @@ class TweetRepository {
 
     } catch (err) {
       console.log(err);
-      return {err: 1};
+      return {err: 1, msg: err};
     }
   }
 
   getTweets = async () => {
     try {
-      return await this.#Tweet.findAll();
+      return await this.#Tweet.findAll({
+        include: this.#User
+      });
 
     } catch (err) {
       console.log(err);

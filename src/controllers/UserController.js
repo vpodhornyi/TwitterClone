@@ -40,6 +40,23 @@ class UserController {
   }
 
   /**
+   * @desc GET get all users
+   * @router /users
+   */
+  getUsers = async (req, res, next) => {
+    try {
+      const answer = await this.#UserService.getUsers();
+
+      console.log(answer);
+      return res.json({answer});
+
+    } catch (err) {
+      console.log(err);
+      next(err)
+    }
+  }
+
+  /**
    * @desc POST login user
    * @router /user/login
    */
@@ -87,23 +104,6 @@ class UserController {
       res.end('refresh');
 
     } catch (err) {
-      next(err)
-    }
-  }
-
-  /**
-   * @desc GET get all users
-   * @router /users
-   */
-  getUsers = async (req, res, next) => {
-    try {
-      const answer = await this.#UserService.getUsers();
-
-      console.log(answer);
-      return res.json({answer});
-
-    } catch (err) {
-      console.log(err);
       next(err)
     }
   }

@@ -1,10 +1,13 @@
-import user from '../models/User.js';
+import models from '../models/models.js';
 
 class UserRepository {
   #User;
+  #Tweet;
 
   constructor(sequelize) {
-    this.#User = user(sequelize);
+    const {User, Tweet} = models(sequelize);
+    this.#User = User;
+    this.#Tweet = Tweet;
   }
 
   create = async (userData) => {
@@ -13,13 +16,15 @@ class UserRepository {
 
     } catch (err) {
       console.log(err);
-      return {err: 1};
+      return {err: 1, msg: err};
     }
   }
 
   getUsers = async () => {
     try {
-      return await this.#User.findAll();
+      return await this.#User.findAll({
+        include: this.#Tweet
+      });
 
     } catch (err) {
       console.log(err);

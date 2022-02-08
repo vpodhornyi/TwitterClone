@@ -2,9 +2,9 @@ import PingController from "../controllers/PingController.js";
 import UserController from "../controllers/UserController.js";
 import TweetController from "../controllers/TweetController.js";
 
-export default (router, sequelize) => {
-  const userController = new UserController(sequelize);
-  const tweetController = new TweetController(sequelize);
+export default (router, models) => {
+  const userController = new UserController(models);
+  const tweetController = new TweetController(models);
 
   // Ping
   router.get(`/ping`, PingController.getPong);

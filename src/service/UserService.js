@@ -3,8 +3,8 @@ import UserRepository from "../repositories/UserRepository.js";
 class UserService {
   #UserRepository;
 
-  constructor(sequelize) {
-    this.#UserRepository = new UserRepository(sequelize);
+  constructor(models) {
+    this.#UserRepository = new UserRepository(models);
   }
 
   create = async (userData) => {

@@ -3,8 +3,8 @@ import TweetService from "../service/TweetService.js";
 class TweetController {
   #tweetService
 
-  constructor(sequelize) {
-    this.#tweetService = new TweetService(sequelize);
+  constructor(models) {
+    this.#tweetService = new TweetService(models);
   }
 
   /**

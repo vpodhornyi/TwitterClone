@@ -3,8 +3,8 @@ import UserService from '../service/UserService.js';
 class UserController {
   #UserService;
 
-  constructor(sequelize) {
-    this.#UserService = new UserService(sequelize);
+  constructor(models) {
+    this.#UserService = new UserService(models);
   }
 
   /**

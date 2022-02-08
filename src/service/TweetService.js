@@ -3,8 +3,8 @@ import TweetRepository from "../repositories/TweetRepository.js";
 class TweetService {
   #TweetRepository;
 
-  constructor(sequelize) {
-    this.#TweetRepository = new TweetRepository(sequelize);
+  constructor(models) {
+    this.#TweetRepository = new TweetRepository(models);
   }
 
   /**

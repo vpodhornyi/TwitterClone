@@ -1,11 +1,9 @@
-import models from '../models/models.js';
-
 class TweetRepository {
   #Tweet;
   #User;
 
-  constructor(sequelize) {
-    const {User, Tweet} = models(sequelize);
+  constructor(models) {
+    const {User, Tweet} = models;
     this.#Tweet = Tweet;
     this.#User = User;
   }

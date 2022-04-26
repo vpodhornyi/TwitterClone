@@ -1,27 +1,74 @@
-import PingController from "../controllers/PingController.js";
-import UserController from "../controllers/UserController.js";
-import TweetController from "../controllers/TweetController.js";
-
-export default (router, models) => {
-  const userController = new UserController(models);
-  const tweetController = new TweetController(models);
-
-  // Ping
-  router.get(`/ping`, PingController.getPong);
-
-  // User
-  router.get(`/users/test/ping`, userController.getPong);
-  router.get(`/users`, userController.getUsers);
-  router.post(`/users`, userController.registration);
-  router.post(`/users/login`, userController.login);
-  router.post(`/users/logout`, userController.logout);
-  router.post(`/users/activate`, userController.activate);
-  router.get(`/users/refresh`, userController.refresh);
-
-  //tweet
-  router.get(`/tweets/test/ping`, tweetController.getPong);
-  router.post(`/tweets`, tweetController.addTweet);
-  router.get(`/tweets`, tweetController.getTweets);
-
-  return router;
-};
+export default ({
+  ping: [
+    {
+      method: "get",
+      url: "/ping",
+      controller: "pingController",
+      controllerMethod: "getPong"
+    }
+  ],
+  users: [
+    {
+      method: "get",
+      url: "/users/test/ping",
+      controller: "userController",
+      controllerMethod: "getPong",
+    },
+    {
+      method: "get",
+      url: "/users",
+      controller: "userController",
+      controllerMethod: "getUsers"
+    },
+    {
+      method: "post",
+      url: "/users",
+      controller: "userController",
+      controllerMethod: "registration"
+    },
+    {
+      method: "post",
+      url: "/users/login",
+      controller: "userController",
+      controllerMethod: "login"
+    },
+    {
+      method: "post",
+      url: "/users/logout",
+      controller: "userController",
+      controllerMethod: "logout"
+    },
+    {
+      method: "post",
+      url: "/users/activate",
+      controller: "userController",
+      controllerMethod: "activate"
+    },
+    {
+      method: "get",
+      url: "/users/refresh",
+      controller: "userController",
+      controllerMethod: "refresh"
+    },
+  ],
+  tweets: [
+    {
+      method: "get",
+      url: "/tweets/test/ping",
+      controller: "tweetController",
+      controllerMethod: "getPong"
+    },
+    {
+      method: "get",
+      url: "/tweets",
+      controller: "tweetController",
+      controllerMethod: "getTweets"
+    },
+    {
+      method: "post",
+      url: "/tweets",
+      controller: "tweetController",
+      controllerMethod: "addTweet"
+    },
+  ]
+})

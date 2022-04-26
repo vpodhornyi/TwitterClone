@@ -1,16 +1,13 @@
 class TweetRepository {
-  #Tweet;
-  #User;
-
   constructor(models) {
     const {User, Tweet} = models;
-    this.#Tweet = Tweet;
-    this.#User = User;
+    this.Tweet = Tweet;
+    this.User = User;
   }
 
-  create = async (tweetData) => {
+  async create(tweetData) {
     try {
-      return await this.#Tweet.create(tweetData)
+      return await this.Tweet.create(tweetData)
 
     } catch (err) {
       console.log(err);
@@ -18,10 +15,10 @@ class TweetRepository {
     }
   }
 
-  getTweets = async () => {
+  async getTweets() {
     try {
-      return await this.#Tweet.findAll({
-        include: this.#User
+      return await this.Tweet.findAll({
+        include: this.User
       });
 
     } catch (err) {

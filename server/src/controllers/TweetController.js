@@ -1,10 +1,8 @@
 import TweetService from "../service/TweetService.js";
 
 class TweetController {
-  #tweetService
-
   constructor(models) {
-    this.#tweetService = new TweetService(models);
+    this.tweetService = new TweetService(models);
   }
 
   /**
@@ -24,13 +22,10 @@ class TweetController {
    * @desc POST user registration data
    * @router /user/registration
    */
-  addTweet = async (req, res, next) => {
+  async addTweet(req, res, next) {
     try {
       const body = req.body;
-
-      console.log('this - ', this);
-      console.log('body - ', body);
-      const answer = await this.#tweetService.create(body);
+      const answer = await this.tweetService.create(body);
 
       res.json({answer});
 
@@ -43,9 +38,9 @@ class TweetController {
    * @desc GET all tweets
    * @router /tweets
    */
-  getTweets = async (req, res, next) => {
+  async getTweets(req, res, next) {
     try {
-      const answer = await this.#tweetService.getTweets();
+      const answer = await this.tweetService.getTweets();
 
       res.json({answer});
 

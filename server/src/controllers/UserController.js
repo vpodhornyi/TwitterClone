@@ -1,10 +1,8 @@
 import UserService from '../service/UserService.js';
 
 class UserController {
-  #UserService;
-
   constructor(models) {
-    this.#UserService = new UserService(models);
+    this.UserService = new UserService(models);
   }
 
   /**
@@ -24,13 +22,10 @@ class UserController {
    * @desc POST user registration data
    * @router /user/registration
    */
-  registration = async (req, res, next) => {
+  async registration(req, res, next) {
     try {
       const body = req.body;
-
-      console.log('this - ', this);
-      console.log('body - ', body);
-      const answer = await this.#UserService.create(body);
+      const answer = await this.UserService.create(body);
 
       res.json({answer});
 
@@ -43,9 +38,9 @@ class UserController {
    * @desc GET get all users
    * @router /users
    */
-  getUsers = async (req, res, next) => {
+  async getUsers(req, res, next) {
     try {
-      const answer = await this.#UserService.getUsers();
+      const answer = await this.UserService.getUsers();
 
       console.log(answer);
       return res.json({answer});

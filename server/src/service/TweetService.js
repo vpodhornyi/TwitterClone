@@ -1,19 +1,17 @@
 import TweetRepository from "../repositories/TweetRepository.js";
 
 class TweetService {
-  #TweetRepository;
-
   constructor(models) {
-    this.#TweetRepository = new TweetRepository(models);
+    this.TweetRepository = new TweetRepository(models);
   }
 
   /**
    * @param tweetData {Object}
    * @return {Promise<*|{err: number}>}
    */
-  create = async (tweetData) => {
+  async create(tweetData) {
     try {
-      return await this.#TweetRepository.create(tweetData);
+      return await this.TweetRepository.create(tweetData);
 
     } catch (err) {
       console.log(err);
@@ -24,9 +22,9 @@ class TweetService {
   /**
    * @return {Promise<*|{msg, err: number}>}
    */
-  getTweets = async () => {
+  async getTweets() {
     try {
-      return await this.#TweetRepository.getTweets();
+      return await this.TweetRepository.getTweets();
 
     } catch (err) {
       console.log(err);

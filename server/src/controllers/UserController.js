@@ -9,11 +9,27 @@ class UserController {
    * @desc GET test ping answer
    * @router /user/test/ping
    */
-  getPong(req, res, next) {
+  async getPong(req, res, next) {
     try {
-      res.status(200).end('pong');
+      return await res.status(200).end('pong');
 
     } catch (err) {
+      next(err)
+    }
+  }
+
+  /**
+   * @desc GET get all users
+   * @router /users
+   */
+  async getUsers(req, res, next) {
+    try {
+      const answer = await this.UserService.getUsers();
+
+      return res.json({answer});
+
+    } catch (err) {
+      console.log(err);
       next(err)
     }
   }
@@ -30,23 +46,6 @@ class UserController {
       res.json({answer});
 
     } catch (err) {
-      next(err)
-    }
-  }
-
-  /**
-   * @desc GET get all users
-   * @router /users
-   */
-  async getUsers(req, res, next) {
-    try {
-      const answer = await this.UserService.getUsers();
-
-      console.log(answer);
-      return res.json({answer});
-
-    } catch (err) {
-      console.log(err);
       next(err)
     }
   }

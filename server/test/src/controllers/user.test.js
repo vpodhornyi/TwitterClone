@@ -12,10 +12,28 @@ describe('GET /users/test/ping', () => {
   })
 })
 
+describe('GET /users', () => {
+  test('should respond text "users"', async () => {
+    const response = await req('get', '/users');
+    const [user] = JSON.parse(response.text).answer;
+    expect(user.firstName).toBe('Viktor');
+    expect(!!user.id).toBeTruthy();
+    expect(!!user.updatedAt).toBeTruthy();
+    expect(!!user.createdAt).toBeTruthy();
+    expect(!!user.tweets).toBeTruthy();
+  })
+})
+
 describe('POST /users', () => {
-  test('should respond text "registration"', async () => {
-    const response = await req('post', '/users');
-    expect(response.text).toBe('registration');
+  test('should return object User', async () => {
+    const response = await req('post', '/users', {
+      "firstName": "Viktor"
+    });
+    const answer = JSON.parse(response.text).answer;
+    expect(answer.firstName).toBe('Viktor');
+    expect(!!answer.id).toBeTruthy();
+    expect(!!answer.updatedAt).toBeTruthy();
+    expect(!!answer.createdAt).toBeTruthy();
   })
 })
 
@@ -44,12 +62,5 @@ describe('GET /users/refresh', () => {
   test('should respond text "refresh"', async () => {
     const response = await req('get', '/users/refresh');
     expect(response.text).toBe('refresh');
-  })
-})
-
-describe('GET /users', () => {
-  test('should respond text "users"', async () => {
-    const response = await req('get', '/users');
-    expect(response.text).toBe('users');
   })
 })

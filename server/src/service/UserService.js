@@ -7,7 +7,6 @@ class UserService {
 
   async create(userData) {
     try {
-      console.log('userData - ', userData);
       return await this.UserRepository.create(userData);
 
     } catch (err) {

@@ -9,9 +9,9 @@ class TweetController {
    * @desc GET test ping answer
    * @router /tweet/test/ping
    */
-  getPong(req, res, next) {
+  async getPong(req, res, next) {
     try {
-      res.status(200).end('pong');
+      return await res.status(200).end('pong');
 
     } catch (err) {
       next(err)

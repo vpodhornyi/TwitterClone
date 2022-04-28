@@ -19,6 +19,9 @@ class Router {
       if (middlewares) middlewares.forEach(func => ((req, res, next) => func(req, res, next))());
       this._router[method](url, this.controllers[controller][controllerMethod].bind(this.controllers[controller]))
     }))
+
+    // this._router.get('/ping', this.controllers.pingController.getPong);
+
     return this._router;
   }
 }

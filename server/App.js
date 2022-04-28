@@ -16,8 +16,9 @@ class App {
   constructor() {
     this._app = express();
     this.PORT = isTest ? process.env.PORT_TEST : process.env.PORT;
-    this.sequelize = new SequelizeClient().sequelize;
-    this.router = new Router(express.Router(), new Model(this.sequelize).models).router;
+    this._sequelize = new SequelizeClient().sequelize;
+    this._models = new Model(this._sequelize).models
+    this.router = new Router(express.Router(), this._models).router;
     this.appUse();
   }
 
@@ -33,10 +34,18 @@ class App {
     return this._app;
   }
 
+  get sequelize() {
+    return this._sequelize;
+  }
+
+  get models() {
+    return this._models;
+  }
+
   start() {
     try {
       this._app.listen(this.PORT, () => console.log(`server run on port: ${this.PORT}`));
-      this.sequelize.sync(isTest && {force: true});
+      this._sequelize.sync(isTest && {force: true});
 
     } catch (e) {
       console.log(`server start error: ${e}`);

@@ -77,12 +77,13 @@ class UserController {
   }
 
   /**
-   * @desc POST activate user account
-   * @router /user/activate
+   * @desc POST create user account
+   * @router /users/sing-up
    */
-  activate(req, res, next) {
+  singUp(req, res, next) {
     try {
-      res.end('activate');
+      console.log('sing_up');
+      res.end('sing_up');
 
     } catch (err) {
       next(err)

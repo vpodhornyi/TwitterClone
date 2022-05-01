@@ -9,7 +9,7 @@ import Router from "./src/router/Router.js";
 import SequelizeClient from "./db/SequelizeClient.js";
 import Model from './src/models/Model.js';
 
-export const APP_URL = '/app/v1';
+export const APP_URL = '/api/v1';
 global.isTest = process.env.NODE_ENV === 'test';
 
 class App {

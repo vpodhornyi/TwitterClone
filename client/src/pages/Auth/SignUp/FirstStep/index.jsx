@@ -79,7 +79,7 @@ export default () => {
                   variant="outlined"/>
               </Grid>
             </Grid>
-            <DateOfBirth/>
+            {/*<DateOfBirth/>*/}
           </DialogContent>
         </Box>
         <Box>

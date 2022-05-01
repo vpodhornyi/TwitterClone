@@ -77,9 +77,9 @@ export default () => {
                   label="Email"
                   variant="outlined"/>
               </Grid>
-              <Grid item sx={{padding: '10px 0'}}>
-                <TextField id="birthDate" sx={{width: '100%'}} label="Birth date" variant="outlined"/>
-              </Grid>
+              {/*<Grid item sx={{padding: '10px 0'}}>*/}
+              {/*  <TextField id="birthDate" sx={{width: '100%'}} label="Birth date" variant="outlined"/>*/}
+              {/*</Grid>*/}
             </Grid>
           </DialogContent>
         </Box>

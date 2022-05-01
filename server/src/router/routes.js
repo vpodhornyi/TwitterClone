@@ -40,9 +40,9 @@ export default ({
     },
     {
       method: "post",
-      url: "/users/activate",
+      url: "/users/sing-up",
       controller: "userController",
-      controllerMethod: "activate"
+      controllerMethod: "singUp"
     },
     {
       method: "get",

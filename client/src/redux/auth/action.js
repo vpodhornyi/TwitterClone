@@ -24,6 +24,7 @@ const signUp = (values) => async dispatch => {
   try {
     dispatch(startLoading());
     const data = await api.post(URLS.USER.SIGN_UP, values);
+    console.log('data - ', data);
     // setAuthToken(data.jwt)
     // setRefreshToken(data.refreshToken)
     // dispatch(ACTIONS.signup.success(data.user))

@@ -82,8 +82,8 @@ class UserController {
    */
   singUp(req, res, next) {
     try {
-      console.log('sing_up');
-      res.end('sing_up');
+      console.log('sing-up');
+      res.end('sing-up');
 
     } catch (err) {
       next(err)

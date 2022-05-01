@@ -51,10 +51,10 @@ describe('POST /users/logout', () => {
   })
 })
 
-describe('POST /users/activate', () => {
-  test('should respond text "activate"', async () => {
-    const response = await req('post', '/users/activate');
-    expect(response.text).toBe('activate');
+describe('POST /users/sing-up', () => {
+  test('should respond text "sing-up"', async () => {
+    const response = await req('post', '/users/sing-up');
+    expect(response.text).toBe('sing-up');
   })
 })
 
